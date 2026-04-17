@@ -27,7 +27,9 @@ export default function HomePage() {
                         <div className="card-desc">
                             Things I've built & shipped
                         </div>
-                        <ArrowIcon />
+                        <div className="w-full h-full flex items-end justify-end mt-2">
+                            <ArrowIcon />
+                        </div>
                     </BentoCard>
                 </Link>
 
@@ -38,7 +40,9 @@ export default function HomePage() {
                             Experience
                         </div>
                         <div className="card-desc">Professional journey</div>
-                        <ArrowIcon />
+                        <div className="w-full h-full flex items-end justify-end mt-2">
+                            <ArrowIcon />
+                        </div>
                     </BentoCard>
                 </Link>
 
@@ -57,7 +61,9 @@ export default function HomePage() {
                         <div className="card-desc">
                             Bio, Skills & Educations
                         </div>
-                        <ArrowIcon />
+                        <div className="w-full h-full flex items-end justify-end mt-2">
+                            <ArrowIcon />
+                        </div>
                     </BentoCard>
                 </Link>
 
@@ -70,7 +76,9 @@ export default function HomePage() {
                         <div className="card-desc">
                             What I love, what drives my curiosity
                         </div>
-                        <ArrowIcon />
+                        <div className="w-full h-full flex items-end justify-end mt-2">
+                            <ArrowIcon />
+                        </div>
                     </BentoCard>
                 </Link>
 
@@ -81,7 +89,9 @@ export default function HomePage() {
                             Contact
                         </div>
                         <div className="card-desc">Let's build together</div>
-                        <ArrowIcon />
+                        <div className="w-full h-full flex items-end justify-end mt-2">
+                            <ArrowIcon />
+                        </div>
                     </BentoCard>
                 </Link>
 
@@ -92,7 +102,9 @@ export default function HomePage() {
                             Trainning & Courses
                         </div>
                         <div className="card-desc">Let's build together</div>
-                        <ArrowIcon />
+                        <div className="w-full h-full flex items-end justify-end mt-2">
+                            <ArrowIcon />
+                        </div>
                     </BentoCard>
                 </Link>
 
