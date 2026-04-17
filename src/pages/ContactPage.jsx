@@ -3,12 +3,15 @@ import BentoCard from "../components/BentoCard";
 import BackArrow from "../components/BackArrow";
 import PORTFOLIO from "../data/portfolio";
 import { Link } from "react-router-dom";
+import Toast from "../components/Toast";
 
 function ContactForm() {
     const [form, setForm] = useState({ name: "", email: "", message: "" });
     const [focused, setFocused] = useState(null);
     const [submitted, setSubmitted] = useState(false);
+    const [loading, setLoading] = useState(false);
     const [selectedProject, setSelectedProject] = useState(null);
+    const [toast, setToast] = useState(null);
 
     const projectTypes = [
         "Website",
@@ -18,49 +21,59 @@ function ContactForm() {
         "Other",
     ];
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
-        const payload = {
-            "form-name": "contact",
-            name: form.name,
-            email: form.email,
-            projectType: selectedProject,
-            message: form.message,
-        };
-
-        await fetch("/", {
-            method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: new URLSearchParams(payload).toString(),
-        });
-
-        setSubmitted(true);
-        setTimeout(() => setSubmitted(false), 3000);
+    const showToast = (message, type = "success") => {
+        setToast({ message, type });
+        setTimeout(() => setToast(null), 3000);
     };
 
-    if (submitted) {
-        return (
-            <div className="cf-success">
-                <div className="cf-success-icon">✓</div>
-                <div className="cf-success-title">Message Sent!</div>
-                <div className="cf-success-desc">
-                    I'll get back to you within 24 hours.
-                </div>
-            </div>
-        );
-    }
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setLoading(true);
+
+        const formData = new FormData();
+        formData.append("access_key", "b9d9569a-17fe-408b-8a4f-9b021a3c5a52");
+        formData.append("name", form.name);
+        formData.append("email", form.email);
+        formData.append("projectType", selectedProject || "Not specified");
+        formData.append("message", form.message);
+
+        try {
+            const res = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                body: formData,
+            });
+
+            const data = await res.json();
+
+            if (data.success) {
+                showToast("Message sent successfully!", "success");
+
+                setSubmitted(true);
+                setForm({ name: "", email: "", message: "" });
+                setSelectedProject(null);
+
+                setTimeout(() => setSubmitted(false), 3000);
+            } else {
+                showToast("Something went wrong. Try again.", "error");
+            }
+        } catch (error) {
+            showToast("Network error. Try again.", "error");
+        }
+
+        setLoading(false);
+    };
 
     return (
         <>
-            <form name="contact" method="POST" data-netlify="true" hidden>
-                <input type="text" name="name" />
-                <input type="email" name="email" />
-                <input type="text" name="projectType" />
-                <textarea name="message"></textarea>
-            </form>
+            {toast && (
+                <Toast
+                    message={toast.message}
+                    type={toast.type}
+                    onClose={() => setToast(null)}
+                />
+            )}
 
-            <form className="cf-form" onSubmit={handleSubmit} method="POST">
+            <form className="cf-form" onSubmit={handleSubmit}>
                 <div className="cf-row">
                     <div className="cf-field">
                         <label className="cf-label">Name</label>
@@ -77,6 +90,7 @@ function ContactForm() {
                             required
                         />
                     </div>
+
                     <div className="cf-field">
                         <label className="cf-label">Email</label>
                         <input
@@ -102,7 +116,11 @@ function ContactForm() {
                             <button
                                 type="button"
                                 key={type}
-                                className={`cf-chip ${selectedProject === type ? "cf-chip-active" : ""}`}
+                                className={`cf-chip ${
+                                    selectedProject === type
+                                        ? "cf-chip-active"
+                                        : ""
+                                }`}
                                 onClick={() => setSelectedProject(type)}>
                                 {type}
                             </button>
@@ -127,18 +145,8 @@ function ContactForm() {
                     />
                 </div>
 
-                <button type="submit" className="cf-submit">
-                    <span>Send Message</span>
-                    <svg
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2">
-                        <path d="M22 2L11 13" />
-                        <path d="M22 2L15 22L11 13L2 9L22 2Z" />
-                    </svg>
+                <button type="submit" className="cf-submit" disabled={loading}>
+                    <span>{loading ? "Sending..." : "Send Message"}</span>
                 </button>
             </form>
         </>
