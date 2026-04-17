@@ -1,0 +1,226 @@
+const PORTFOLIO = {
+    name: "Anayatul Ahad Shoikot",
+    title: "Frontend Developer",
+    tagline: "Building digital experiences that push boundaries",
+    email: "shoikotofficial@gmail.com",
+    location: "Dhaka, Bangladesh",
+    bio: "I'm a Computer-Science graduate & passionate about software - web development, with solid full-stack experience in PHP, JavaScript, and HTML/CSS. Currently, I'm leading the GradeSaver platform and working as a front-end developer at a renowned software company. I am focused on JavaScript based frameworks like React.Js, Next.Js & Vue.Js to build interactive, responsive, user-friendly applications. I'm eager to grow through both full-time roles and freelance projects while continuing to sharpen my front-end expertise.",
+    birthday: {
+        date: "30 November, 2000",
+        age: 25,
+    },
+    courses: [
+        { name: "React", platform: "Creative IT", year: "2025" },
+        { name: "Digital Marketing", platform: "Lead IT", year: "2025" },
+        { name: "Laravel", platform: "UY Lab", year: "2023" },
+    ],
+    languages: [
+        { name: "Bangla", level: "Native", proficiency: 100 },
+        { name: "English", level: "Fluent", proficiency: 85 },
+        { name: "Japanes", level: "Newbee", proficiency: 5 },
+    ],
+    projects: [
+        {
+            id: 1,
+            title: "GradeSaver Platform",
+            description:
+                "A full-featured academic platform helping students access study guides, literature essays, and course materials. Built with a focus on performance and SEO.",
+            image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&q=80",
+            tags: ["React", "Next.js", "TailwindCSS", "Node.js"],
+            github: "https://github.com/Anayatul-Ahad-Shoikot",
+            live: "https://gradesaver.com",
+            featured: true,
+            year: "2024",
+            category: "Web App",
+        },
+        {
+            id: 2,
+            title: "E-Commerce Dashboard",
+            description:
+                "Admin dashboard for managing products, orders, and analytics with real-time data visualization and responsive charts.",
+            image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
+            tags: ["React", "Recharts", "Firebase", "TailwindCSS"],
+            github: "https://github.com/Anayatul-Ahad-Shoikot",
+            live: "#",
+            featured: true,
+            year: "2024",
+            category: "Dashboard",
+        },
+        {
+            id: 3,
+            title: "Portfolio v1",
+            description:
+                "My first developer portfolio with smooth animations, dark theme, and interactive project showcase.",
+            image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80",
+            tags: ["React", "Framer Motion", "CSS"],
+            github: "https://github.com/Anayatul-Ahad-Shoikot",
+            live: "#",
+            featured: false,
+            year: "2023",
+            category: "Portfolio",
+        },
+        {
+            id: 4,
+            title: "Weather App",
+            description:
+                "Real-time weather application with location-based forecasts, animated weather icons, and a 7-day outlook.",
+            image: "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=800&q=80",
+            tags: ["JavaScript", "API", "CSS", "HTML"],
+            github: "https://github.com/Anayatul-Ahad-Shoikot",
+            live: "#",
+            featured: false,
+            year: "2023",
+            category: "Web App",
+        },
+        {
+            id: 5,
+            title: "Task Management Tool",
+            description:
+                "Kanban-style task manager with drag-and-drop, team collaboration features, and deadline tracking.",
+            image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&q=80",
+            tags: ["React", "Node.js", "MongoDB", "Socket.io"],
+            github: "https://github.com/Anayatul-Ahad-Shoikot",
+            live: "#",
+            featured: false,
+            year: "2024",
+            category: "Web App",
+        },
+        {
+            id: 6,
+            title: "Restaurant Landing Page",
+            description:
+                "A stunning landing page for a high-end restaurant featuring menu display, reservation form, and parallax scrolling.",
+            image: "https://images.unsplash.com/photo-1552566626-52f8b828add9?w=800&q=80",
+            tags: ["HTML", "CSS", "JavaScript", "GSAP"],
+            github: "https://github.com/Anayatul-Ahad-Shoikot",
+            live: "#",
+            featured: false,
+            year: "2023",
+            category: "Landing Page",
+        },
+    ],
+
+    experience: [
+        {
+            role: "Framer Developer & Analytics Specialist",
+            company: "Contract Based",
+            period: "Dec 2025 — Present",
+            desc: "Developing the website from the ground up, analyzing user behavior and traffic patterns, and implementing strategic design and content improvements to enhance engagement and reach.",
+        },
+        {
+            role: "Frontend Developer (Framer & Webflow)",
+            company: "Softvence",
+            period: "Sep 2025 — Jan 2026",
+            desc: "Focused on Webflow and Framer development, delivering structured design systems, GSAP interactions, 3D animation workflows, and fully responsive interfaces. Collaborated closely on project management and client communication.",
+        },
+        {
+            role: "Junior Web Developer (Intern)",
+            company: "Business Automation LTD",
+            period: "Jul 2024 — Sep 2024",
+            desc: "Worked with Laravel Blade templates, UI styling, session and cookie management, REST API testing using Postman, ORM modeling, and foundational React development.",
+        },
+        {
+            role: "HR Intern",
+            company: "GAOTek Inc.",
+            period: "Jun 2025 — Aug 2025",
+            desc: "Assisted with HR operations, candidate screening, communication handling, and administrative support while gaining hands-on experience in HR processes and organizational management.",
+        },
+        {
+            role: "Grader",
+            company: "United International University",
+            period: "2023 — 2024",
+            desc: "Evaluated student assignments and lab reports, provided academic support, and assisted faculty members with course-related documentation and administrative tasks.",
+        },
+        {
+            role: "Treasurer",
+            company: "UIU Computer Club",
+            period: "Jan 2024 — Oct 2024",
+            desc: "Oversaw budgeting, managed the registration and HR processes, coordinated with multiple departments, and supported event and operational planning.",
+        },
+        {
+            role: "Peer Mentor",
+            company: "UIU Computer Club",
+            period: "Dec 2022 — Nov 2024",
+            desc: "Guided junior students in programming and core academic courses including SPL, OOP, DLD, Physics, and Calculus. Provided structured learning support and study guidance.",
+        },
+        {
+            role: "Senior HR Executive",
+            company: "UIU Computer Club",
+            period: "2022 — 2024",
+            desc: "Managed a member base of over 2,000, organized technical events and recruitment processes, supervised registration operations, and developed FAQ and onboarding guidance for members.",
+        },
+        {
+            role: "Junior HR Executive",
+            company: "UIU Computer Club",
+            period: "2021 — 2022",
+            desc: "Handled member registration, onboarding communication, and recruitment activities while actively contributing to club events as a volunteer.",
+        },
+    ],
+
+    education: [
+        {
+            degree: "Computer Science & Engineering",
+            tag: "CSE",
+            year: "2021 - 2025",
+            institution: "United International University",
+            grade: "CGPA - 3.70",
+            gradeNote: "upto 12th trimester",
+            icon: "🎓",
+            accent: "#FF6B2B",
+        },
+        {
+            degree: "Higher Secondary Certificate",
+            tag: "HSC",
+            year: "2018 - 2020",
+            institution: "Dhaka City College",
+            grade: "GPA - 5.00",
+            gradeNote: "Science",
+            icon: "📐",
+            accent: "#FF8C42",
+        },
+        {
+            degree: "Secondary School Certificate",
+            tag: "SSC",
+            year: "2013 - 2018",
+            institution: "Banani Bidyaniketan School",
+            grade: "GPA - 5.00",
+            gradeNote: "Science",
+            icon: "📘",
+            accent: "#E85D26",
+        },
+        {
+            degree: "Primary School Certificate",
+            tag: "PSC",
+            year: "2013",
+            institution: "Banani Bidyaniketan School",
+            grade: "GPA - 5.00",
+            gradeNote: null,
+            icon: "✏️",
+            accent: "#D4501E",
+        },
+    ],
+
+    interests: [
+        { icon: "◈", label: "Web Development", desc: "Building responsive, user-focused websites and interfaces." },
+        { icon: "△", label: "Robotics", desc: "Exploring automation, sensors, and intelligent control systems." },
+        { icon: "⬢", label: "HR & Admins", desc: "Handling recruitment, coordination, documentation, and organizational workflows." },
+        { icon: "◇", label: "Cycling", desc: "Enjoying long rides, endurance sessions, and outdoor exploration." },
+        { icon: "▣", label: "Badminton", desc: "Playing regularly to improve agility, coordination, and technique." },
+        { icon: "⊡", label: "Gaming", desc: "Exploring strategy, storytelling, and immersive gameplay experiences." },
+        { icon: "◉", label: "Teaching", desc: "Helping others learn through clear explanation and practical guidance." },
+    ],
+
+    skills: [
+        "React", "TailwindCss", "JavaScript", "Framer", "Framer Motion",
+        "Webflow", "OnePage", "C", "Figma", "Java", "postgreSQL", "PHP", "HTML", "CSS", "Canva", "NodeJS"
+    ],
+
+    social: {
+        github: "https://github.com/Anayatul-Ahad-Shoikot",
+        facebook: "https://www.facebook.com/ahadshoikot",
+        linkedin: "https://www.linkedin.com/in/anayatul-ahad-shoikot",
+        instagram: "https://www.instagram.com/___shoi____kot___",
+    },
+};
+
+export default PORTFOLIO;
