@@ -60,7 +60,7 @@ function ContactForm() {
                 <textarea name="message"></textarea>
             </form>
 
-            <form className="cf-form" onSubmit={handleSubmit}>
+            <form className="cf-form" onSubmit={handleSubmit} method="POST">
                 <div className="cf-row">
                     <div className="cf-field">
                         <label className="cf-label">Name</label>
