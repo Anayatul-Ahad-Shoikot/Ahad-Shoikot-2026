@@ -20,7 +20,7 @@ export default function DetailsPage() {
                     <div className="card-title">
                         CSE graduate & Frontend Developer
                     </div>
-                    <div className="card-desc">{PORTFOLIO.bio}</div>
+                    <div className="card-desc md:text-lg">{PORTFOLIO.bio}</div>
                 </BentoCard>
 
                 <BentoCard className="md:row-span-2" delay={120}>
@@ -30,18 +30,14 @@ export default function DetailsPage() {
                         <div className="edu-timeline">
                             {PORTFOLIO.education.map((edu, idx) => (
                                 <div key={idx} className="edu-item">
-                                    <div className="edu-rail">
-                                        <div className="edu-node" />
-                                        <div className="edu-connector" />
-                                    </div>
                                     <div className="edu-content">
                                         <div className="edu-content-top">
-                                            <h3 className="edu-degree">
-                                                {edu.degree}
-                                            </h3>
                                             <span className="edu-tag">
                                                 {edu.tag}
                                             </span>
+                                            <h3 className="edu-degree">
+                                                {edu.degree}
+                                            </h3>
                                         </div>
                                         <div className="edu-meta">
                                             <span className="edu-year">
@@ -89,7 +85,7 @@ export default function DetailsPage() {
                             <h2 className="card-title">Get to Know Me</h2>
                         </div>
 
-                        <div className="grid grid-cols-2 gap-4 h-full">
+                        <div className="grid grid-cols-2 gap-4 md:h-full">
                             <div className="pd-about-item">
                                 <div className="pd-about-key">Birthday</div>
                                 <div className="pd-about-value">

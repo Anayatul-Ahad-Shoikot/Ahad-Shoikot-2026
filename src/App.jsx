@@ -18,7 +18,7 @@ function ScrollToTop() {
 
 export default function App() {
     return (
-        <div className="w-screen h-screen flex items-center justify-center p-3 sm:p-6 md:p-8 xl:p-10">
+        <div className="w-screen md:h-screen flex items-start justify-start p-3 sm:p-6 md:p-8 xl:p-10">
             <BrowserRouter>
                 <ScrollToTop />
                 <div className="noise-overlay" />

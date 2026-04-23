@@ -4,6 +4,7 @@ import BackArrow from "../components/BackArrow";
 import PORTFOLIO from "../data/portfolio";
 import { Link } from "react-router-dom";
 import Toast from "../components/Toast";
+import { Puzzle, DraftingCompass, Smartphone, Gauge } from "lucide-react";
 
 function ContactForm() {
     const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -201,10 +202,26 @@ function FAQSection() {
 
 export default function ContactPage() {
     const services = [
-        { icon: "⚡", label: "Frontend Dev", desc: "React, Next.js, Vue" },
-        { icon: "🎨", label: "UI/UX", desc: "Figma to Code" },
-        { icon: "📱", label: "Responsive", desc: "Mobile-first design" },
-        { icon: "🚀", label: "Performance", desc: "Optimized & fast" },
+        {
+            icon: <Puzzle stroke="#ff6b00" />,
+            label: "Frontend Dev",
+            desc: "React, Next.js, Vue",
+        },
+        {
+            icon: <DraftingCompass stroke="#ff6b00" />,
+            label: "UI/UX",
+            desc: "Figma to Code",
+        },
+        {
+            icon: <Smartphone stroke="#ff6b00" />,
+            label: "Responsive",
+            desc: "Mobile-first design",
+        },
+        {
+            icon: <Gauge stroke="#ff6b00" />,
+            label: "Performance",
+            desc: "Optimized & fast",
+        },
     ];
 
     return (
@@ -243,7 +260,7 @@ export default function ContactPage() {
                 <BentoCard delay={140} style={{ gridRow: "span 2" }}>
                     <div className="card-label">Services</div>
                     <div className="card-title">What I Do</div>
-                    <div className="svc-grid" style={{ marginTop: 12 }}>
+                    <div className="svc-grid" style={{ marginTop: 5 }}>
                         {services.map((s, i) => (
                             <div key={i} className="svc-item">
                                 <div className="svc-icon">{s.icon}</div>
@@ -273,9 +290,7 @@ export default function ContactPage() {
 
                 <BentoCard delay={480} style={{ gridColumn: "span 3" }}>
                     <div className="card-label">FAQ</div>
-                    <div className="card-title" style={{ marginBottom: 12 }}>
-                        Common Questions
-                    </div>
+                    <div className="card-title">Common Questions</div>
                     <FAQSection />
                 </BentoCard>
 
