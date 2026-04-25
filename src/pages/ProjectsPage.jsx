@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import BentoCard from "../components/BentoCard";
 import BackArrow from "../components/BackArrow";
 import PORTFOLIO from "../data/portfolio";
@@ -37,6 +37,55 @@ const StarIcon = () => (
     </svg>
 );
 
+function ProjectImageCarousel({ images, alt }) {
+    const imgs = Array.isArray(images) ? images : [images];
+    const [current, setCurrent] = useState(0);
+
+    useEffect(() => {
+        if (imgs.length <= 1) return;
+        const id = setInterval(
+            () => setCurrent((c) => (c + 1) % imgs.length),
+            8000,
+        );
+        return () => clearInterval(id);
+    }, [imgs.length]);
+
+    if (imgs.length === 1) {
+        return (
+            <img
+                src={imgs[0]}
+                alt={alt}
+                className="proj-thumb"
+                loading="lazy"
+            />
+        );
+    }
+
+    return (
+        <>
+            {imgs.map((src, i) => (
+                <img
+                    key={i}
+                    src={src}
+                    alt={alt}
+                    className="proj-thumb"
+                    loading="lazy"
+                    style={{
+                        position: "absolute",
+                        inset: 0,
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                        opacity: i === current ? 1 : 0,
+                        transition: "opacity 0.7s ease",
+                        zIndex: i === current ? 1 : 0,
+                    }}
+                />
+            ))}
+        </>
+    );
+}
+
 function ProjectCard({ project, index, featured = false }) {
     const [isHovered, setIsHovered] = useState(false);
     const cardRef = useRef(null);
@@ -49,11 +98,9 @@ function ProjectCard({ project, index, featured = false }) {
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}>
             <div className="proj-thumb-wrap">
-                <img
-                    src={project.image}
+                <ProjectImageCarousel
+                    images={project.image}
                     alt={project.title}
-                    className="proj-thumb"
-                    loading="lazy"
                 />
                 <div
                     className={`proj-thumb-overlay ${isHovered ? "proj-thumb-overlay-show" : ""}`}>
@@ -162,13 +209,23 @@ export default function ProjectsPage() {
                         </div>
                         <div className="proj-stat">
                             <div className="proj-stat-num">
-                                {PORTFOLIO.projects.filter((p) => p.featured).length}
+                                {
+                                    PORTFOLIO.projects.filter((p) => p.featured)
+                                        .length
+                                }
                             </div>
                             <div className="proj-stat-label">Featured</div>
                         </div>
                         <div className="proj-stat">
                             <div className="proj-stat-num">
-                                {new Set(PORTFOLIO.projects.flatMap((p) => p.tags)).size}+
+                                {
+                                    new Set(
+                                        PORTFOLIO.projects.flatMap(
+                                            (p) => p.tags,
+                                        ),
+                                    ).size
+                                }
+                                +
                             </div>
                             <div className="proj-stat-label">Technologies</div>
                         </div>
@@ -201,6 +258,9 @@ export default function ProjectsPage() {
                             "TailwindCSS",
                             "Node.js",
                             "Framer Motion",
+                            "Framer",
+                            "Webflow",
+                            "Bootstrap",
                         ].map((t) => (
                             <span
                                 key={t}
@@ -212,7 +272,6 @@ export default function ProjectsPage() {
                     </div>
                 </BentoCard>
 
-                {/* ═══ Projects Grid (full width below) ═══ */}
                 <div style={{ gridColumn: "1 / -1" }}>
                     <div className="proj-grid">
                         {featured.map((project, i) => (
