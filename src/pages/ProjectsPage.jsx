@@ -103,29 +103,35 @@ function ProjectCard({ project, index, featured = false }) {
                     alt={project.title}
                 />
                 <div
-                    className={`proj-thumb-overlay ${isHovered ? "proj-thumb-overlay-show" : ""}`}>
-                    <a
-                        href={project.live}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="proj-overlay-btn proj-overlay-btn-primary">
-                        <ExternalIcon />
-                        <span>Live Preview</span>
-                    </a>
-                    <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="proj-overlay-btn proj-overlay-btn-secondary">
-                        <GithubIcon />
-                        <span>Source</span>
-                    </a>
+                    className={`proj-thumb-overlay cursor-pointer ${isHovered ? "proj-thumb-overlay-show" : ""}`}>
+                    {featured ? (
+                        <></>
+                    ) : (
+                        <>
+                            <a
+                                href={project.live}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="proj-overlay-btn proj-overlay-btn-primary">
+                                <ExternalIcon />
+                                <span>Live Preview</span>
+                            </a>
+                            <a
+                                href={project.github}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="proj-overlay-btn proj-overlay-btn-secondary">
+                                <GithubIcon />
+                                <span>Source</span>
+                            </a>
+                        </>
+                    )}
                 </div>
 
                 {featured && (
                     <div className="proj-badge">
                         <StarIcon />
-                        <span>Featured</span>
+                        <span>Work in progress</span>
                     </div>
                 )}
 
@@ -214,7 +220,7 @@ export default function ProjectsPage() {
                                         .length
                                 }
                             </div>
-                            <div className="proj-stat-label">Featured</div>
+                            <div className="proj-stat-label">Current</div>
                         </div>
                         <div className="proj-stat">
                             <div className="proj-stat-num">

@@ -1,25 +1,29 @@
 const PORTFOLIO = {
     name: "Anayatul Ahad Shoikot",
-    title: "ReactJs . NextJs . Framer . Webflow . Wordpress",
+    title: "FrontEnd Dev - ReactJs . NextJs . Framer . Webflow",
     tagline: "Building digital experiences that push boundaries",
     email: "shoikotofficial@gmail.com",
     location: "Dhaka, Bangladesh",
     bio: "I'm a Computer-Science graduate & passionate about software - web development, with solid full-stack experience in PHP, JavaScript, and HTML/CSS. Currently, I'm leading the GradeSaver platform and working as a front-end developer. I am focused on JavaScript based frameworks like React.Js, Next.Js & Vue.Js to build interactive, responsive, user-friendly applications. I'm eager to grow through both full-time roles and freelance projects while continuing to sharpen my front-end expertise.",
+
     birthday: {
         date: "30 November, 2000",
         age: 25,
     },
+
     courses: [
         { name: "NSDA Level-3", platform: "Creative IT", year: "2026" },
         { name: "React", platform: "Creative IT", year: "2025" },
         { name: "Digital Marketing", platform: "Lead IT", year: "2025" },
         { name: "Laravel", platform: "UY Lab", year: "2023" },
     ],
+
     languages: [
         { name: "Bangla", level: "Native", proficiency: 100 },
         { name: "English", level: "Fluent", proficiency: 85 },
         { name: "Japanes", level: "Newbee", proficiency: 5 },
     ],
+
     projects: [
         {
             id: 1,
@@ -33,7 +37,7 @@ const PORTFOLIO = {
             tags: ["HTML", "CSS", "Javascript", "Bootstrap", "PHP", "Mysql", "Laragon", "PHP Mailer", "Box Icons"],
             github: "https://github.com/Anayatul-Ahad-Shoikot/GradeSaver",
             live: "https://gradesaverbd.netlify.app/",
-            featured: true,
+            featured: false,
             year: "2024",
             category: "Web App",
         },
@@ -148,6 +152,34 @@ const PORTFOLIO = {
             live: "https://divinegroupind.framer.website/",
             featured: false,
             year: "2025",
+            category: "Landing Page",
+        },
+        {
+            id: 9,
+            title: "DPP Connects",
+            description:
+                "DPP Connect supports pharmacists on their Independent Prescribing (IP) journey by providing access to verified DPP mentors, structured supervision, and end-to-end placement support across the UK healthcare system. This Framer-built site was developed from a template called 'Healix' and modified, redesigned heavily by me to alligned with the brand identity and user experience. I had to redeisgn and bring new sections, pages and interactions to cope up with the brand service.",
+            image: ["/assets/dpp-1.png",
+                "/assets/dpp-2.png",
+                "/assets/dpp-3.png"],
+            tags: ["Framer", "Framer Motion", "Google Analytics", "Framer CMS"],
+            github: "",
+            live: "https://portal.dppconnect.co.uk/",
+            featured: true,
+            year: "2026",
+            category: "Landing Page",
+        },
+        {
+            id: 10,
+            title: "Sore",
+            description:
+                "A premium Gym rebuilding project for sore, a high-end fitness center. This webflow-built site was developed from scratch and designed by me and my foreign partner. Client was so nice and co-operative. I had to redesign and bring new sections, pages and interactions to cope up with the brand service. Also I need to apply custom code for some functionality and interactions. ( Work in progress )",
+            image: ["/WIP.jpg"],
+            tags: ["Webflow", "Webflow CMS", "Webflow Form", "Custom Code"],
+            github: "",
+            live: "#",
+            featured: false,
+            year: "2026",
             category: "Landing Page",
         },
     ],

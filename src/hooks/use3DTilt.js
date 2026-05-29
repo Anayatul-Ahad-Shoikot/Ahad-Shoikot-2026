@@ -1,7 +1,3 @@
-// ═══════════════════════════════════════════════════════════════
-// use3DTilt.js — Mouse-tracking 3D perspective tilt + glow
-// ═══════════════════════════════════════════════════════════════
-
 import { useRef, useCallback } from "react";
 
 export default function use3DTilt(intensity = 8) {
