@@ -182,7 +182,7 @@ export default function HomePage() {
                         <div className="card-title text-2xl md:text-3xl lg:text-4xl text-white/50 italic w-full">
                             Trainning & Courses
                         </div>
-                        <div className="card-desc">Let's build together</div>
+                        <div className="card-desc">How I earned knowledge and Skills</div>
                         <div className="w-full h-full flex items-end justify-end mt-2">
                             <ArrowIcon />
                         </div>
