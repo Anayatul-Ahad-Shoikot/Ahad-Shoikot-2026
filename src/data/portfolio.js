@@ -26,7 +26,7 @@ const PORTFOLIO = {
 
     projects: [
         {
-            id: 16,
+            id: 1,
             title: "GradeSaver",
             description:
                 "GradeSaver is an online learning platform built to make education accessible and organized for students, mentors, and admins. Students can browse courses, enroll via bKash, attend classes, and access study materials through a simple, secure dashboard. Mentors get a separate panel to manage courses, upload class resources, and track student activity. A robust admin panel oversees all users, courses, batches, payments, and platform data. With role-based access, secure authentication, and smooth content management, GradeSaver provides a streamlined and efficient learning experience.",
@@ -42,7 +42,7 @@ const PORTFOLIO = {
             category: "Web App",
         },
         {
-            id: 15,
+            id: 2,
             title: "Crypgo",
             description:
                 "A sleek, fully-responsive landing page for a modern cryptocurrency exchange. This landing page was an assement and buid in under 2 hours from scratch figma design to real website.",
@@ -58,7 +58,7 @@ const PORTFOLIO = {
             category: "Landing Page",
         },
         {
-            id: 14,
+            id: 3,
             title: "The DivineGroup Mumbai",
             description:
                 "A Framer-built landing page for LaserMee, a platform that helps users discover and promote events and nightlife experiences. This version highlights event browsing, community interaction, and bold visual branding. New and re-desined version. Entire design and development is done by me.",
@@ -73,7 +73,7 @@ const PORTFOLIO = {
             category: "Landing Page",
         },
         {
-            id: 13,
+            id: 4,
             title: "Alex - AI",
             description:
                 "A clean, modern Framer-built landing page for Alex, a strategic AI-powered advisor designed to support business leaders, portfolio managers, and board directors. The site introduces Alex as an “executive team you can't afford,” highlighting how it augments leadership with institutional intelligence, proactive insights, and continuous learning—positioning the tool as a smarter alternative to generic chat AI for high-level decision-making. It also features clear navigation with prompts to try the advisor, view pricing, and get in touch.",
@@ -90,7 +90,7 @@ const PORTFOLIO = {
             category: "Web App",
         },
         {
-            id: 12,
+            id: 5,
             title: "IBTechPrep",
             description:
                 "A professional Framer-built landing site for IBTechPrep, a curated platform offering the latest 2026 investment banking technical and behavioral interview questions, sourced directly from real firm recruiting cycles. The site highlights unique value by focusing on up-to-date interview content, structured question banks, and features designed to help candidates prepare more effectively than generic resources. It also includes clear navigation to pricing, FAQs, and access to the question bank — all presented with clean typography and a recruitment-focused design.",
@@ -106,7 +106,7 @@ const PORTFOLIO = {
             category: "Web App",
         },
         {
-            id: 11,
+            id: 6,
             title: "Affi & Allie",
             description:
                 "A professional Framer-built landing site for Affi & Allié, a specialist affiliate marketing agency focused on helping DTC wellness brands scale through strategic partnerships and performance-driven campaigns. The site clearly communicates core services — including affiliate growth & optimization, premium program setup, performance audits, automation training, and custom solutions — alongside the agency’s data-led, results-first approach to influencer and performance marketing. The design emphasizes clarity, structured service breakdowns, and conversion-focused calls to action to engage prospective clients.",
@@ -122,7 +122,7 @@ const PORTFOLIO = {
             category: "Landing Page",
         },
         {
-            id: 10,
+            id: 7,
             title: "Emotions",
             description:
                 "Emotions an emotional based dynamic studio platform where we host, create, brand your own programme.",
@@ -138,7 +138,7 @@ const PORTFOLIO = {
             category: "Landing Page",
         },
         {
-            id: 9,
+            id: 8,
             title: "Nido Isola",
             description:
                 "NIDO ISOLA is a small, architect-designed holiday home on an exceptionally small hillside plot — created with the belief that true luxury is not about size, but about clarity. On Monte Isola, the largest lake island in Italy, we designed a boutique retreat where architecture, silence and light come together in a way that feels both intimate and expansive.",
@@ -154,7 +154,7 @@ const PORTFOLIO = {
             category: "Landing Page",
         },
         {
-            id: 8,
+            id: 9,
             title: "Book Yolo",
             description:
                 "BookYolo is an AI-powered travel tool designed to help you inspect the quality of hotels and vacation rentals before you actually book them. From vacation rentals to hotels, resorts, hostels, and even motels, BookYolo covers every kind of stay.",
@@ -170,7 +170,7 @@ const PORTFOLIO = {
             category: "Landing Page",
         },
         {
-            id: 7,
+            id: 10,
             title: "United One Communications",
             description:
                 "United One Communications is a technology solutions provider delivering secure, innovative, and mission-focused capabilities to government and commercial organizations. Ensure mission-critical operations stay protected with advanced security engineered for the highest stakes.",
@@ -186,7 +186,7 @@ const PORTFOLIO = {
             category: "Landing Page",
         },
         {
-            id: 6,
+            id: 11,
             title: "Laser Me ( v1 )",
             description:
                 "A Framer-built landing page for LaserMee, a platform that helps users discover and promote events and nightlife experiences. This version highlights event browsing, community interaction, and bold visual branding. (This is the older version — the newer live version is available in another project.)",
@@ -204,7 +204,7 @@ const PORTFOLIO = {
             category: "Landing Page",
         },
         {
-            id: 5,
+            id: 12,
             title: "Laser Me ( v2 )",
             description:
                 "A Framer-built landing page for LaserMee, a platform that helps users discover and promote events and nightlife experiences. This version highlights event browsing, community interaction, and bold visual branding. New and re-desined version. Entire design and development is done by me.",
@@ -219,7 +219,7 @@ const PORTFOLIO = {
             category: "Landing Page",
         },
         {
-            id: 4,
+            id: 13,
             title: "DPP Connects",
             description:
                 "DPP Connect supports pharmacists on their Independent Prescribing (IP) journey by providing access to verified DPP mentors, structured supervision, and end-to-end placement support across the UK healthcare system. This Framer-built site was developed from a template called 'Healix' and modified, redesigned heavily by me to alligned with the brand identity and user experience. I had to redeisgn and bring new sections, pages and interactions to cope up with the brand service.",
@@ -234,7 +234,7 @@ const PORTFOLIO = {
             category: "Landing Page",
         },
         {
-            id: 3,
+            id: 14,
             title: "Kardiologicum Augsburg & Neusass",
             description:
                 "Performance PLUS ist das kardiologische Premium-Programm für Menschen, die ihre Leistungsfähigkeit nicht schätzen, sondern fundiert verstehen wollen, damit Training, Gesundheit und Belastbarkeit endlich zusammenpassen.",
@@ -250,7 +250,7 @@ const PORTFOLIO = {
             category: "Landing Page",
         },
         {
-            id: 2,
+            id: 15,
             title: "Sore",
             description:
                 "A premium Gym rebuilding project for sore, a high-end fitness center. This webflow-built site was developed from scratch and designed by me and my foreign partner. Client was so nice and co-operative. I had to redesign and bring new sections, pages and interactions to cope up with the brand service. Also I need to apply custom code for some functionality and interactions. ( Work in progress )",
@@ -266,7 +266,7 @@ const PORTFOLIO = {
             category: "Landing Page",
         },
         {
-            id: 1,
+            id: 16,
             title: "Verdira",
             description:
                 "Verdira acquires ophthalmology practices from retiring physicians in NY, NJ, and CT. Physician ownership, permanent hold, no private equity. Your staff, name, and patients stay intact.",

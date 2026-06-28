@@ -188,8 +188,8 @@ export default function ProjectsPage() {
             ? PORTFOLIO.projects
             : PORTFOLIO.projects.filter((p) => p.category === filter);
 
-    const featured = filtered.filter((p) => p.featured);
-    const regular = filtered.filter((p) => !p.featured);
+    const featured = filtered.filter((p) => p.featured).reverse();
+    const regular = filtered.filter((p) => !p.featured).reverse();
     return (
         <div className="w-full h-full page-transition-enter">
             <div className="w-full h-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
