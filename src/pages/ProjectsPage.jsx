@@ -116,14 +116,14 @@ function ProjectCard({ project, index, featured = false }) {
                                 <ExternalIcon />
                                 <span>Live Preview</span>
                             </a>
-                            <a
+                            {/* <a
                                 href={project.github}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="proj-overlay-btn proj-overlay-btn-secondary">
                                 <GithubIcon />
                                 <span>Source</span>
-                            </a>
+                            </a> */}
                         </>
                     )}
                 </div>
@@ -163,14 +163,14 @@ function ProjectCard({ project, index, featured = false }) {
                         <ExternalIcon />
                         <span>Live Preview</span>
                     </a>
-                    <a
+                    {/* <a
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="proj-link proj-link-ghost">
                         <GithubIcon />
                         <span>GitHub</span>
-                    </a>
+                    </a> */}
                 </div>
             </div>
         </div>
