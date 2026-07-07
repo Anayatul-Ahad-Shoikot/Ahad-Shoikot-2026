@@ -277,7 +277,7 @@ const PORTFOLIO = {
             tags: ["Framer", "Framer Motion", "Framer CMS", "Custom Code"],
             github: "#",
             live: "https://www.verdira.com/",
-            featured: true,
+            featured: false,
             year: "2026",
             category: "Web App",
         },
