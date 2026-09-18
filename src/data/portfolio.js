@@ -204,6 +204,22 @@ const PORTFOLIO = {
             category: "Landing Page",
         },
         {
+            id: 17,
+            title: "Kardiologicum (Parent company)",
+            description:
+                "Spezialisten für Herzrhythmusstörungen, Telemonitoring und präventive Kardiologie in Neusäß & Augsburg. Moderne Diagnostik, kurze Wartezeiten, Top-Bewertungen.",
+            image: ["/assets/kar2-1.png",
+                "/assets/kar2-2.png",
+                "/assets/kar2-3.png",
+                "/assets/kar2-4.png"],
+            tags: ["Framer", "Framer Motion"],
+            github: "#",
+            live: "https://karrierekardiologicum.onepage.me",
+            featured: false,
+            year: "2025",
+            category: "Landing Page",
+        },
+        {
             id: 12,
             title: "Laser Me ( v2 )",
             description:
@@ -281,6 +297,7 @@ const PORTFOLIO = {
             year: "2026",
             category: "Web App",
         },
+
     ],
 
     experience: [
