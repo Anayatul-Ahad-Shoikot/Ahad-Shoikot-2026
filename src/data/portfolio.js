@@ -297,6 +297,36 @@ const PORTFOLIO = {
             year: "2026",
             category: "Web App",
         },
+        {
+            id: 17,
+            title: "Intellix Solutions LTD",
+            description:
+                "Intellix — Software Development, BPO & Technology Solutions from Bangladesh.",
+            image: ["/assets/intellix-1.png",
+                "/assets/intellix-2.png",
+                "/assets/intellix-3.png"],
+            tags: ["Next.js", "Framer Motion", "TailwindCss", "React"],
+            github: "https://github.com/intellixAhad/Intellix",
+            live: "https://www.intellixsolutions.co/",
+            featured: true,
+            year: "2026",
+            category: "Website",
+        },
+        {
+            id: 18,
+            title: "CareOps",
+            description:
+                "Remote administrative support for US medical practices and home care agencies.",
+            image: ["/assets/careops-1.png",
+                "/assets/careops-2.png",
+                "/assets/careops-3.png"],
+            tags: ["Next.js", "Framer Motion", "TailwindCss", "React", "Radix UI"],
+            github: "https://github.com/intellixAhad/CareOps",
+            live: "https://www.thecareops.com/",
+            featured: true,
+            year: "2026",
+            category: "Landing Page",
+        },
 
     ],
 
