@@ -297,8 +297,6 @@
             border-color 0.5s var(--ease-smooth),
             background 0.5s var(--ease-smooth),
             box-shadow 0.5s var(--ease-smooth);
-        transform-style: preserve-3d;
-        perspective: 1000px;
 
         &::before {
             content: "";

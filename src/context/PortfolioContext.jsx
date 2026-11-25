@@ -5,29 +5,33 @@ import {
     useState,
     useCallback,
 } from "react";
-import STATIC_PORTFOLIO from "../data/portfolio";
 import { isSupabaseConfigured } from "../lib/supabase";
-import { fetchAllPortfolioData, slugify } from "../services/portfolioService";
+import { fetchAllPortfolioData } from "../services/portfolioService";
 
-const fallbackPortfolio = {
-    ...STATIC_PORTFOLIO,
+const emptyPortfolio = {
+    name: "",
+    title: "",
+    tagline: "",
+    email: "",
+    location: "",
+    bio: "",
+    birthday: { date: "", age: 0 },
     acceptingProjects: true,
     avatarUrl: null,
+    social: {},
+    skills: [],
+    skillRows: [],
+    projects: [],
+    experience: [],
+    education: [],
+    interests: [],
+    courses: [],
     certificates: [],
-    skillRows: STATIC_PORTFOLIO.skills.map((name, i) => ({
-        id: i + 1,
-        name,
-        sort_order: i + 1,
-    })),
-    projects: STATIC_PORTFOLIO.projects.map((p) => ({
-        ...p,
-        slug: slugify(p.title),
-        longDescription: "",
-    })),
+    languages: [],
 };
 
 const PortfolioContext = createContext({
-    portfolio: fallbackPortfolio,
+    portfolio: emptyPortfolio,
     loading: false,
     error: null,
     isUsingDatabase: false,
@@ -35,14 +39,14 @@ const PortfolioContext = createContext({
 });
 
 export function PortfolioProvider({ children }) {
-    const [portfolio, setPortfolio] = useState(fallbackPortfolio);
+    const [portfolio, setPortfolio] = useState(emptyPortfolio);
     const [loading, setLoading] = useState(isSupabaseConfigured);
     const [error, setError] = useState(null);
     const [isUsingDatabase, setIsUsingDatabase] = useState(false);
 
     const refresh = useCallback(async () => {
         if (!isSupabaseConfigured) {
-            setPortfolio(fallbackPortfolio);
+            setPortfolio(emptyPortfolio);
             setIsUsingDatabase(false);
             setLoading(false);
             return;
@@ -54,12 +58,11 @@ export function PortfolioProvider({ children }) {
             setPortfolio(dbData);
             setIsUsingDatabase(true);
         } catch (err) {
-            console.warn(
-                "Falling back to static portfolio data:",
+            console.error(
+                "Failed to load portfolio data from Supabase:",
                 err?.message || err,
             );
             setError(err?.message || "Failed to load database");
-            setPortfolio(fallbackPortfolio);
             setIsUsingDatabase(false);
         } finally {
             setLoading(false);

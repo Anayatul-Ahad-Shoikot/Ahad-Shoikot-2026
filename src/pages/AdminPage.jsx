@@ -122,9 +122,8 @@ export default function AdminPage() {
                         Connect Your Supabase Project
                     </h1>
                     <p className="text-sm text-[#8a857d] leading-relaxed mb-4">
-                        Your portfolio is currently running on the static fallback
-                        in <code>src/data/portfolio.js</code>. To enable the live
-                        database and Admin Panel:
+                        Supabase environment variables are not configured yet.
+                        To enable the live database and Admin Panel:
                     </p>
                     <ol className="list-decimal list-inside space-y-2 text-sm text-[#f0ece4]/90 mb-6">
                         <li>
