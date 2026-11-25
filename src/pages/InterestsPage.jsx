@@ -1,13 +1,14 @@
 import BentoCard from "../components/BentoCard";
 import BackArrow from "../components/BackArrow";
-import PORTFOLIO from "../data/portfolio";
+import { usePortfolio } from "../context/PortfolioContext";
 import { Link } from "react-router-dom";
 
 export default function InterestsPage() {
+    const { portfolio: PORTFOLIO } = usePortfolio();
 
     return (
-        <div className="w-full h-full page-transition-enter">
-            <div className="w-full h-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+        <div className="w-full flex-1 flex flex-col page-transition-enter">
+            <div className="w-full flex-1 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
                 <div className="flex flex-col items-center justify-center">
                     <Link to="/" className="back-btn">
                         <BackArrow /> Back

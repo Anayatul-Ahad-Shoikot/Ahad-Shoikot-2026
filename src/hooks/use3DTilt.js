@@ -7,6 +7,12 @@ export default function use3DTilt(intensity = 8) {
     const handleMove = useCallback(
         (e) => {
             if (!ref.current) return;
+            if (
+                window.matchMedia("(hover: none)").matches ||
+                window.matchMedia("(prefers-reduced-motion: reduce)").matches
+            ) {
+                return;
+            }
             const rect = ref.current.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;

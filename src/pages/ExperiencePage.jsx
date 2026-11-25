@@ -1,12 +1,13 @@
 import BentoCard from "../components/BentoCard";
 import BackArrow from "../components/BackArrow";
-import PORTFOLIO from "../data/portfolio";
+import { usePortfolio } from "../context/PortfolioContext";
 import { Link } from "react-router-dom";
 
 export default function ExperiencePage() {
+    const { portfolio: PORTFOLIO } = usePortfolio();
     return (
-        <div className="w-full h-full page-transition-enter">
-            <div className="w-full h-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+        <div className="w-full flex-1 flex flex-col page-transition-enter">
+            <div className="w-full flex-1 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
                 <div className="flex flex-col items-center justify-center">
                     <Link to="/" className="back-btn">
                         <BackArrow /> Back
@@ -24,29 +25,28 @@ export default function ExperiencePage() {
                             <div className="exp-card-inner">
                                 {/* Header */}
                                 <div className="exp-header">
-                                    <div className="exp-header-left">
-                                        <h3 className="card-title">
-                                            {exp.role}
-                                        </h3>
-                                        <div className="exp-company-row">
-                                            <div className="exp-index">
-                                                {String(i + 1).padStart(2, "0")}
+                                    <div className="exp-header-top">
+                                        <span className="exp-index">
+                                            {String(i + 1).padStart(2, "0")}
+                                        </span>
+                                        {isCurrent && (
+                                            <div className="exp-current-badge">
+                                                <span className="exp-current-dot" />
+                                                Current
                                             </div>
-                                            <span className="exp-company">
-                                                {exp.company}
-                                            </span>
-                                            <span className="exp-period">
-                                                {exp.period}
-                                            </span>
-                                        </div>
+                                        )}
                                     </div>
-
-                                    {isCurrent && (
-                                        <div className="exp-current-badge">
-                                            <span className="exp-current-dot" />
-                                            Current
-                                        </div>
-                                    )}
+                                    <h3 className="card-title break-words">
+                                        {exp.role}
+                                    </h3>
+                                    <div className="exp-company-row">
+                                        <span className="exp-company">
+                                            {exp.company}
+                                        </span>
+                                        <span className="exp-period">
+                                            {exp.period}
+                                        </span>
+                                    </div>
                                 </div>
 
                                 {/* Description */}

@@ -1,7 +1,9 @@
 import { useState } from "react";
 import BentoCard from "../components/BentoCard";
 import BackArrow from "../components/BackArrow";
-import PORTFOLIO from "../data/portfolio";
+import { usePortfolio } from "../context/PortfolioContext";
+import { isSupabaseConfigured } from "../lib/supabase";
+import { submitContactMessage } from "../services/portfolioService";
 import { Link } from "react-router-dom";
 import Toast from "../components/Toast";
 import { Puzzle, DraftingCompass, Smartphone, Gauge } from "lucide-react";
@@ -24,7 +26,6 @@ function ContactForm() {
 
     const showToast = (message, type = "success") => {
         setToast({ message, type });
-        setTimeout(() => setToast(null), 3000);
     };
 
     const handleSubmit = async (e) => {
@@ -39,30 +40,75 @@ function ContactForm() {
         formData.append("message", form.message);
 
         try {
-            const res = await fetch("https://api.web3forms.com/submit", {
-                method: "POST",
-                body: formData,
-            });
+            let dbSaved = false;
+            if (isSupabaseConfigured) {
+                try {
+                    await submitContactMessage({
+                        name: form.name,
+                        email: form.email,
+                        projectType: selectedProject || "Not specified",
+                        message: form.message,
+                    });
+                    dbSaved = true;
+                } catch (dbErr) {
+                    console.warn("Supabase contact insert failed:", dbErr);
+                }
+            }
 
-            const data = await res.json();
+            let web3Ok = false;
+            try {
+                const res = await fetch("https://api.web3forms.com/submit", {
+                    method: "POST",
+                    body: formData,
+                });
+                const data = await res.json();
+                web3Ok = Boolean(data.success);
+            } catch {
+                // Ignore Web3Forms network failure if DB saved
+            }
 
-            if (data.success) {
+            if (dbSaved || web3Ok) {
                 showToast("Message sent successfully!", "success");
 
                 setSubmitted(true);
                 setForm({ name: "", email: "", message: "" });
                 setSelectedProject(null);
-
-                setTimeout(() => setSubmitted(false), 3000);
             } else {
                 showToast("Something went wrong. Try again.", "error");
             }
-        } catch (error) {
+        } catch {
             showToast("Network error. Try again.", "error");
         }
 
         setLoading(false);
     };
+
+    if (submitted) {
+        return (
+            <>
+                {toast && (
+                    <Toast
+                        message={toast.message}
+                        type={toast.type}
+                        onClose={() => setToast(null)}
+                    />
+                )}
+                <div className="cf-success">
+                    <div className="cf-success-icon">✓</div>
+                    <div className="cf-success-title">Message Sent!</div>
+                    <p className="cf-success-desc mb-4">
+                        Thanks for reaching out. I&apos;ll get back to you soon.
+                    </p>
+                    <button
+                        type="button"
+                        className="cf-submit"
+                        onClick={() => setSubmitted(false)}>
+                        Send Another Message
+                    </button>
+                </div>
+            </>
+        );
+    }
 
     return (
         <>
@@ -179,8 +225,10 @@ function FAQSection() {
     return (
         <div className="faq-list">
             {faqs.map((faq, idx) => (
-                <div
+                <button
+                    type="button"
                     key={idx}
+                    aria-expanded={openIdx === idx}
                     className={`faq-item ${openIdx === idx ? "faq-item-open" : ""}`}
                     onClick={() => setOpenIdx(openIdx === idx ? null : idx)}>
                     <div className="faq-question">
@@ -194,13 +242,14 @@ function FAQSection() {
                         className={`faq-answer ${openIdx === idx ? "faq-answer-open" : ""}`}>
                         {faq.a}
                     </div>
-                </div>
+                </button>
             ))}
         </div>
     );
 }
 
 export default function ContactPage() {
+    const { portfolio: PORTFOLIO } = usePortfolio();
     const services = [
         {
             icon: <Puzzle stroke="#ff6b00" />,
@@ -224,9 +273,26 @@ export default function ContactPage() {
         },
     ];
 
+    const processSteps = [
+        { num: "01", title: "Discovery", desc: "Goals, scope & timeline" },
+        { num: "02", title: "Design", desc: "Wireframes & visual direction" },
+        { num: "03", title: "Build", desc: "Responsive, clean code" },
+        { num: "04", title: "Launch", desc: "Testing & post-launch support" },
+    ];
+
+    const availability = [
+        { day: "Mon", on: true },
+        { day: "Tue", on: true },
+        { day: "Wed", on: true },
+        { day: "Thu", on: true },
+        { day: "Fri", on: true },
+        { day: "Sat", on: true },
+        { day: "Sun", on: false },
+    ];
+
     return (
-        <div className="w-full h-full page-transition-enter">
-            <div className="w-full h-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+        <div className="w-full flex-1 flex flex-col page-transition-enter">
+            <div className="w-full flex-1 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 grid-flow-dense gap-5">
                 <div className="flex flex-col items-center justify-center">
                     <Link to="/" className="back-btn">
                         <BackArrow /> Back
@@ -237,7 +303,7 @@ export default function ContactPage() {
                     </p>
                 </div>
 
-                <BentoCard className="contact-main" delay={0}>
+                <BentoCard className="contact-main sm:col-span-2" delay={0}>
                     <div className="card-label">Get In Touch</div>
                     <div className="contact-big-text">
                         Got a project idea?
@@ -253,11 +319,13 @@ export default function ContactPage() {
                         className="status-indicator"
                         style={{ marginTop: "24px" }}>
                         <span className="status-dot" />
-                        Currently accepting new projects
+                        {PORTFOLIO.acceptingProjects !== false
+                            ? "Currently accepting new projects"
+                            : "Currently booked · Limited availability"}
                     </div>
                 </BentoCard>
 
-                <BentoCard delay={140} style={{ gridRow: "span 2" }}>
+                <BentoCard delay={140} className="lg:row-span-2">
                     <div className="card-label">Services</div>
                     <div className="card-title">What I Do</div>
                     <div className="svc-grid" style={{ marginTop: 5 }}>
@@ -269,35 +337,75 @@ export default function ContactPage() {
                             </div>
                         ))}
                     </div>
+
+                    <div className="mt-auto pt-5 border-t border-[#1f1f1f]">
+                        <div className="card-label">Availability</div>
+                        <div className="flex items-center justify-between text-xs text-[#8a857d] font-mono mb-2">
+                            <span>GMT+6 · {PORTFOLIO.location}</span>
+                            <span className="text-[#ff6b00]">~24h reply</span>
+                        </div>
+                        <div className="avail-grid">
+                            {availability.map((d) => (
+                                <div key={d.day} className="avail-day">
+                                    <div className="avail-day-label">{d.day}</div>
+                                    <div
+                                        className={`avail-dot ${
+                                            d.on ? "avail-dot-on" : "avail-dot-off"
+                                        }`}
+                                    />
+                                </div>
+                            ))}
+                        </div>
+                    </div>
                 </BentoCard>
 
-                <BentoCard delay={260} style={{ gridColumn: "span 2" }}>
+                <BentoCard delay={260} className="sm:col-span-2 lg:col-span-2">
                     <div className="card-label">Socials</div>
                     <div className="card-title">Find Me Online</div>
                     <div>
-                        {Object.entries(PORTFOLIO.social).map(
-                            ([platform, handle]) => (
-                                <div key={platform} className="social-link">
+                        {Object.entries(PORTFOLIO.social || {})
+                            .filter(([, handle]) => Boolean(handle && handle.trim()))
+                            .map(([platform, handle]) => (
+                                <a
+                                    key={platform}
+                                    href={handle}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="social-link">
                                     <span className="social-platform">
                                         {platform}
                                     </span>
                                     <span>{handle}</span>
-                                </div>
-                            ),
-                        )}
+                                </a>
+                            ))}
                     </div>
                 </BentoCard>
 
-                <BentoCard delay={480} style={{ gridColumn: "span 3" }}>
+                <BentoCard delay={300} className="sm:col-span-2 md:col-span-1">
+                    <div className="card-label">Process</div>
+                    <div className="card-title">How I Work</div>
+                    <div className="proc-steps">
+                        {processSteps.map((step) => (
+                            <div key={step.num} className="proc-step">
+                                <span className="proc-num">{step.num}</span>
+                                <div className="proc-info">
+                                    <div className="proc-title">{step.title}</div>
+                                    <div className="proc-desc">{step.desc}</div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </BentoCard>
+
+                <BentoCard delay={480} className="sm:col-span-2 md:col-span-2 lg:col-span-2">
                     <div className="card-label">FAQ</div>
                     <div className="card-title">Common Questions</div>
                     <FAQSection />
                 </BentoCard>
 
                 <BentoCard
-                    className="md:col-span-2"
-                    delay={320}
-                    style={{ gridColumn: "span 2", gridRow: "span 2" }}>
+                    className="sm:col-span-2 md:col-span-3 lg:col-span-2"
+                    delay={320}>
                     <div className="card-label">Send a Message</div>
                     <div className="card-title" style={{ marginBottom: 16 }}>
                         Let's Talk

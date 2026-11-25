@@ -1,12 +1,30 @@
 import BentoCard from "../components/BentoCard";
 import BackArrow from "../components/BackArrow";
-import PORTFOLIO from "../data/portfolio";
+import { usePortfolio } from "../context/PortfolioContext";
 import { Link } from "react-router-dom";
 
+function getAge(dateString, fallback) {
+    const birthDate = new Date(dateString);
+    if (Number.isNaN(birthDate.getTime())) return fallback;
+    const today = new Date();
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDiff = today.getMonth() - birthDate.getMonth();
+    if (
+        monthDiff < 0 ||
+        (monthDiff === 0 && today.getDate() < birthDate.getDate())
+    ) {
+        age--;
+    }
+    return age;
+}
+
 export default function DetailsPage() {
+    const { portfolio: PORTFOLIO } = usePortfolio();
+    const age = getAge(PORTFOLIO.birthday.date, PORTFOLIO.birthday.age);
+
     return (
-        <div className="w-full h-full page-transition-enter">
-            <div className="w-full h-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+        <div className="w-full flex-1 flex flex-col page-transition-enter">
+            <div className="w-full flex-1 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
                 <div className="flex flex-col items-center justify-center">
                     <Link to="/" className="back-btn">
                         <BackArrow /> Back
@@ -63,10 +81,7 @@ export default function DetailsPage() {
                     </div>
                 </BentoCard>
 
-                <BentoCard
-                    className="md:col-span-2"
-                    delay={240}
-                    style={{ gridColumn: "span 2" }}>
+                <BentoCard className="sm:col-span-2" delay={240}>
                     <div className="card-label">Tech Stack</div>
                     <div className="card-title">Skills & Tools</div>
                     <div className="skills-grid">
@@ -96,15 +111,15 @@ export default function DetailsPage() {
                                 <div className="pd-about-key">Age</div>
                                 <div className="pd-about-value">
                                     <span className="pd-about-value-accent">
-                                        {PORTFOLIO.birthday.age}
-                                    </span>
+                                        {age}
+                                    </span>{" "}
                                     yrs
                                 </div>
                             </div>
                             <div className="pd-about-item pd-about-item-wide">
                                 <div className="pd-about-key">Based In</div>
                                 <div className="pd-about-value">
-                                    Dhaka, Bangladesh
+                                    {PORTFOLIO.location}
                                 </div>
                             </div>
                         </div>

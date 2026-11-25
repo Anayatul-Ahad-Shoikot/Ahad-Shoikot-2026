@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
 import BentoCard from "../components/BentoCard";
 import BackArrow from "../components/BackArrow";
-import PORTFOLIO from "../data/portfolio";
+import { usePortfolio } from "../context/PortfolioContext";
 
 const GithubIcon = () => (
     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -38,7 +38,7 @@ const StarIcon = () => (
 );
 
 function ProjectImageCarousel({ images, alt }) {
-    const imgs = Array.isArray(images) ? images : [images];
+    const imgs = (Array.isArray(images) ? images : [images]).filter(Boolean);
     const [current, setCurrent] = useState(0);
 
     useEffect(() => {
@@ -49,6 +49,14 @@ function ProjectImageCarousel({ images, alt }) {
         );
         return () => clearInterval(id);
     }, [imgs.length]);
+
+    if (imgs.length === 0) {
+        return (
+            <div className="w-full h-full flex items-center justify-center bg-[#0d0d0d] text-xs font-mono text-[#8a857d]">
+                No preview
+            </div>
+        );
+    }
 
     if (imgs.length === 1) {
         return (
@@ -104,27 +112,20 @@ function ProjectCard({ project, index, featured = false }) {
                 />
                 <div
                     className={`proj-thumb-overlay cursor-pointer ${isHovered ? "proj-thumb-overlay-show" : ""}`}>
-                    {featured ? (
-                        <></>
-                    ) : (
-                        <>
-                            <a
-                                href={project.live}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="proj-overlay-btn proj-overlay-btn-primary">
-                                <ExternalIcon />
-                                <span>Live Preview</span>
-                            </a>
-                            {/* <a
-                                href={project.github}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="proj-overlay-btn proj-overlay-btn-secondary">
-                                <GithubIcon />
-                                <span>Source</span>
-                            </a> */}
-                        </>
+                    <Link
+                        to={`/projects/${project.id}`}
+                        className="proj-overlay-btn proj-overlay-btn-primary">
+                        <span>View Details</span>
+                    </Link>
+                    {project.live && project.live !== "#" && (
+                        <a
+                            href={project.live}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="proj-overlay-btn proj-overlay-btn-ghost">
+                            <ExternalIcon />
+                            <span>Live Preview</span>
+                        </a>
                     )}
                 </div>
 
@@ -140,7 +141,11 @@ function ProjectCard({ project, index, featured = false }) {
 
             <div className="proj-body">
                 <div className="proj-top-row">
-                    <h3 className="proj-title">{project.title}</h3>
+                    <Link
+                        to={`/projects/${project.id}`}
+                        className="proj-title hover:text-[#ff6b00] transition-colors">
+                        {project.title}
+                    </Link>
                     <span className="proj-year">{project.year}</span>
                 </div>
 
@@ -155,22 +160,31 @@ function ProjectCard({ project, index, featured = false }) {
                 </div>
 
                 <div className="proj-links">
-                    <a
-                        href={project.live}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                    <Link
+                        to={`/projects/${project.id}`}
                         className="proj-link proj-link-primary">
-                        <ExternalIcon />
-                        <span>Live Preview</span>
-                    </a>
-                    {/* <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="proj-link proj-link-ghost">
-                        <GithubIcon />
-                        <span>GitHub</span>
-                    </a> */}
+                        <span>View Details</span>
+                    </Link>
+                    {project.live && project.live !== "#" && (
+                        <a
+                            href={project.live}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="proj-link proj-link-ghost">
+                            <ExternalIcon />
+                            <span>Live</span>
+                        </a>
+                    )}
+                    {project.github && project.github !== "#" && (
+                        <a
+                            href={project.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="proj-link proj-link-ghost">
+                            <GithubIcon />
+                            <span>GitHub</span>
+                        </a>
+                    )}
                 </div>
             </div>
         </div>
@@ -178,6 +192,7 @@ function ProjectCard({ project, index, featured = false }) {
 }
 
 export default function ProjectsPage() {
+    const { portfolio: PORTFOLIO } = usePortfolio();
     const [filter, setFilter] = useState("All");
     const categories = [
         "All",
@@ -191,8 +206,8 @@ export default function ProjectsPage() {
     const featured = filtered.filter((p) => p.featured).reverse();
     const regular = filtered.filter((p) => !p.featured).reverse();
     return (
-        <div className="w-full h-full page-transition-enter">
-            <div className="w-full h-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+        <div className="w-full flex-1 flex flex-col page-transition-enter">
+            <div className="w-full flex-1 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
                 <div className="flex flex-col items-center justify-center">
                     <Link to="/" className="back-btn">
                         <BackArrow /> Back
@@ -202,7 +217,7 @@ export default function ProjectsPage() {
                 </div>
 
                 {/* Stats + Filter card */}
-                <BentoCard delay={0} className="md:col-span-2">
+                <BentoCard delay={0} className="sm:col-span-2">
                     <div className="card-label">Overview</div>
                     <div
                         className="proj-stats-row"
@@ -250,7 +265,7 @@ export default function ProjectsPage() {
                 </BentoCard>
 
                 {/* Tech highlight card */}
-                <BentoCard delay={160}>
+                <BentoCard delay={160} className="sm:col-span-2 md:col-span-3 lg:col-span-1">
                     <div className="card-label">Primary Stack</div>
                     <div
                         className="card-title"

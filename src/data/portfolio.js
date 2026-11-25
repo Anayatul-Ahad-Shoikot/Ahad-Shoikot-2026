@@ -21,7 +21,7 @@ const PORTFOLIO = {
     languages: [
         { name: "Bangla", level: "Native", proficiency: 100 },
         { name: "English", level: "Fluent", proficiency: 85 },
-        { name: "Japanes", level: "Newbee", proficiency: 5 },
+        { name: "Japanese", level: "Beginner", proficiency: 5 },
     ],
 
     projects: [
@@ -34,7 +34,7 @@ const PORTFOLIO = {
                 "/assets/gradesaver-2.png",
                 "/assets/gradesaver-3.png",
                 "/assets/gradesaver-4.png",],
-            tags: ["HTML", "CSS", "Javascript", "Bootstrap", "PHP", "Mysql", "Laragon", "PHP Mailer", "Box Icons"],
+            tags: ["HTML", "CSS", "JavaScript", "Bootstrap", "PHP", "MySQL", "Laragon", "PHP Mailer", "Box Icons"],
             github: "https://github.com/Anayatul-Ahad-Shoikot/GradeSaver",
             live: "https://gradesaverbd.netlify.app/",
             featured: false,
@@ -45,7 +45,7 @@ const PORTFOLIO = {
             id: 2,
             title: "Crypgo",
             description:
-                "A sleek, fully-responsive landing page for a modern cryptocurrency exchange. This landing page was an assement and buid in under 2 hours from scratch figma design to real website.",
+                "A sleek, fully-responsive landing page for a modern cryptocurrency exchange. This landing page was an assessment and built in under 2 hours from scratch Figma design to real website.",
             image: ["/assets/crypgo-1.png",
                 "/assets/crypgo-2.png",
                 "/assets/crypgo-3.png",
@@ -61,7 +61,7 @@ const PORTFOLIO = {
             id: 3,
             title: "The DivineGroup Mumbai",
             description:
-                "A Framer-built landing page for LaserMee, a platform that helps users discover and promote events and nightlife experiences. This version highlights event browsing, community interaction, and bold visual branding. New and re-desined version. Entire design and development is done by me.",
+                "A Framer-built website for The DivineGroup Mumbai, highlighting events, nightlife experiences, and bold visual branding. Entire design and development done by me.",
             image: ["/assets/divine-1.png",
                 "/assets/divine-2.png",
                 "/assets/divine-3.png"],
@@ -196,7 +196,7 @@ const PORTFOLIO = {
                 "/assets/laser-4.png",
                 "/assets/laser-5.png",
                 "/assets/laser-6.png"],
-            tags: ["Framer", "Framer Motion", "Google Analytics", "hubspot", "Ms Clarity", "Hey Flow"],
+            tags: ["Framer", "Framer Motion", "Google Analytics", "HubSpot", "MS Clarity", "Hey Flow"],
             github: "#",
             live: "https://lasermee.framer.website/",
             featured: false,
@@ -204,7 +204,7 @@ const PORTFOLIO = {
             category: "Landing Page",
         },
         {
-            id: 17,
+            id: 19,
             title: "Kardiologicum (Parent company)",
             description:
                 "Spezialisten für Herzrhythmusstörungen, Telemonitoring und präventive Kardiologie in Neusäß & Augsburg. Moderne Diagnostik, kurze Wartezeiten, Top-Bewertungen.",
@@ -223,11 +223,11 @@ const PORTFOLIO = {
             id: 12,
             title: "Laser Me ( v2 )",
             description:
-                "A Framer-built landing page for LaserMee, a platform that helps users discover and promote events and nightlife experiences. This version highlights event browsing, community interaction, and bold visual branding. New and re-desined version. Entire design and development is done by me.",
+                "A Framer-built landing page for LaserMee, a platform that helps users discover and promote events and nightlife experiences. This version highlights event browsing, community interaction, and bold visual branding. New and redesigned version. Entire design and development is done by me.",
             image: ["/assets/laser2-1.png",
                 "/assets/laser2-2.png",
                 "/assets/laser2-3.png"],
-            tags: ["Framer", "Framer Motion", "Google Analytics", "hubspot", "Ms Clarity", "Hey Flow"],
+            tags: ["Framer", "Framer Motion", "Google Analytics", "HubSpot", "MS Clarity", "Hey Flow"],
             github: "#",
             live: "https://laser.me/",
             featured: false,
@@ -238,7 +238,7 @@ const PORTFOLIO = {
             id: 13,
             title: "DPP Connects",
             description:
-                "DPP Connect supports pharmacists on their Independent Prescribing (IP) journey by providing access to verified DPP mentors, structured supervision, and end-to-end placement support across the UK healthcare system. This Framer-built site was developed from a template called 'Healix' and modified, redesigned heavily by me to alligned with the brand identity and user experience. I had to redeisgn and bring new sections, pages and interactions to cope up with the brand service.",
+                "DPP Connect supports pharmacists on their Independent Prescribing (IP) journey by providing access to verified DPP mentors, structured supervision, and end-to-end placement support across the UK healthcare system. This Framer-built site was developed from a template called 'Healix' and modified, redesigned heavily by me to align with the brand identity and user experience. I had to redesign and bring new sections, pages and interactions to keep up with the brand service.",
             image: ["/assets/dpp-1.png",
                 "/assets/dpp-2.png",
                 "/assets/dpp-3.png"],
@@ -305,7 +305,7 @@ const PORTFOLIO = {
             image: ["/assets/intellix-1.png",
                 "/assets/intellix-2.png",
                 "/assets/intellix-3.png"],
-            tags: ["Next.js", "Framer Motion", "TailwindCss", "React"],
+            tags: ["Next.js", "Framer Motion", "TailwindCSS", "React"],
             github: "https://github.com/intellixAhad/Intellix",
             live: "https://www.intellixsolutions.co/",
             featured: true,
@@ -320,7 +320,7 @@ const PORTFOLIO = {
             image: ["/assets/careops-1.png",
                 "/assets/careops-2.png",
                 "/assets/careops-3.png"],
-            tags: ["Next.js", "Framer Motion", "TailwindCss", "React", "Radix UI"],
+            tags: ["Next.js", "Framer Motion", "TailwindCSS", "React", "Radix UI"],
             github: "https://github.com/intellixAhad/CareOps",
             live: "https://www.thecareops.com/",
             featured: true,
@@ -332,10 +332,10 @@ const PORTFOLIO = {
 
     experience: [
         {
-            role: "Frelancer - wevdevelopment",
+            role: "Freelancer - Web Development",
             company: "Upwork",
             period: "May 2026 - Present",
-            desc: "project hunting, foreign client communication, understanding client vision, design UI/UX, site development ( Framer, webflow )",
+            desc: "Project hunting, foreign client communication, understanding client vision, UI/UX design, site development (Framer, Webflow)",
         }
         , {
             role: "Framer Developer & Analytics Specialist",
@@ -400,7 +400,7 @@ const PORTFOLIO = {
             year: "2021 - 2025",
             institution: "United International University",
             grade: "CGPA - 3.70",
-            gradeNote: "upto 12th trimester",
+            gradeNote: "up to 12th trimester",
             icon: "🎓",
             accent: "#FF6B2B",
         },
@@ -447,15 +447,15 @@ const PORTFOLIO = {
     ],
 
     skills: [
-        "React", "TailwindCss", "JavaScript", "Framer", "Framer Motion",
-        "Webflow", "OnePage", "C", "Figma", "Java", "postgreSQL", "PHP", "HTML", "CSS", "Canva", "NodeJS"
+        "React", "TailwindCSS", "JavaScript", "Framer", "Framer Motion",
+        "Webflow", "OnePage", "C", "Figma", "Java", "PostgreSQL", "PHP", "HTML", "CSS", "Canva", "Node.js"
     ],
 
     social: {
         github: "https://github.com/Anayatul-Ahad-Shoikot",
         facebook: "https://www.facebook.com/ahadshoikot",
         linkedin: "https://www.linkedin.com/in/anayatul-ahad-shoikot",
-        instagram: "https://www.instagram.com/___shoi____kot___",
+        instagram: "https://www.instagram.com/__shoi____kot__",
     },
 };
 
